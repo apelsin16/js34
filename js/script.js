@@ -47,7 +47,7 @@ root.appendChild(form);
 root.getElementsByClassName('form')[i].appendChild(ul);
 }
 
-for (var j = 0, length1=test.data.questions[0].answers[j].length; j<length1; j++){
+for (var j = 0, k = 0, length1=test.data.questions[k].answers[j].length, length2=test.data.questions.length; j<length1, k<length2; j++, k++){
 
   var newLi = document.createElement('li');
   newLi.classList.add('answer'+[j]);
@@ -62,16 +62,17 @@ for (var j = 0, length1=test.data.questions[0].answers[j].length; j<length1; j++
   var label = document.createElement('label');
   label.classList.add('label');
   label.htmlFor = 'answer' + [j];
-  label.innerHTML = test.data.questions[0].answers[j];
+  label.innerHTML = test.data.questions[k].answers[j];
 
-  var li = document.getElementsById('variantsOfAnswers0');
-  li.appendChild(newLi)[j];
+  var attach0 = document.getElementsByClassName('variantsOfAnswers')[k];
+  attach0.appendChild(newLi)[j];
 
   var attach = document.getElementsByClassName('answer')[j];
   attach.appendChild(input);
   attach.appendChild(label);
 
 }
+
 
 
 
