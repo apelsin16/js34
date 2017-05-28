@@ -30,34 +30,47 @@ root.appendChild(headLineText);
 
 for (var i = 0, length=test.data.questions.length; i<length; i++) {
 
-var question = document.createElement('h3');
-var questionText = document.createTextNode(test.data.questions[i].title);
-var form = document.createElement('form');
-form.classList.add('form');
-var ul = document.createElement('ul');
-ul.classList.add('variantsOfAnswers');
-root.appendChild(question)[i];
+  var question = document.createElement('h3');
+
+  var questionText = document.createTextNode(test.data.questions[i].title);
+
+  var form = document.createElement('form');
+  form.classList.add('form');
+
+  var ul = document.createElement('ul');
+  ul.classList.add('variantsOfAnswers'+[i]);
+  ul.setAttribute('id', 'variantsOfAnswers'+[i]);
+
+  root.appendChild(question)[i];
 root.appendChild(questionText)[i];
 root.appendChild(form);
 root.getElementsByClassName('form')[i].appendChild(ul);
+}
 
-for (var j = 0, length1=test.data.questions[i].answers.length; j<length1; j++){
+for (var j = 0, length1=test.data.questions[0].answers[j].length; j<length1; j++){
 
   var newLi = document.createElement('li');
-  newLi.classList.add('answer');
-  var attach0 = document.getElementsByClassName('variantsOfAnswers')[j];
-  attach0.appendChild(newLi)[j];
+  newLi.classList.add('answer'+[j]);
+  //var attach0 = document.getElementsByClassName('variantsOfAnswers')[k];
+
+//
+
   var input = document.createElement('input');
   input.setAttribute('type', 'radio');
   input.setAttribute('id', 'answer' + [j]);
+
   var label = document.createElement('label');
   label.classList.add('label');
   label.htmlFor = 'answer' + [j];
-  label.innerHTML = test.data.questions[i].answers[j];
+  label.innerHTML = test.data.questions[0].answers[j];
+
+  var li = document.getElementsById('variantsOfAnswers0');
+  li.appendChild(newLi)[j];
+
   var attach = document.getElementsByClassName('answer')[j];
   attach.appendChild(input);
   attach.appendChild(label);
-}
+
 }
 
 
